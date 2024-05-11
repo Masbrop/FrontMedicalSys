@@ -1,0 +1,111 @@
+<div class="col-md-6 offset-md-3">
+  <h3 class="text-center">Edición de Paciente</h3>
+  <form (ngSubmit)= "onSubmit()" #pacienteForm = "ngForm">
+    <div class="form-group">
+
+      <label>Nombre: </label>
+      <input type="text"
+      class="form-control"
+      id='nombre'
+      [(ngModel)]="paciente.nombre"
+      name="nombre"
+      required
+      minlength="8"
+      maxlength="45"
+      placeholder="Digite el nombre del paciente"
+      #nombre = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf = "nombre.errors?.['required']">
+          Ingrese el nombre del paciente
+        </div>
+        <div *ngIf = "nombre.errors?.['minlength']">
+          El nombre tiene que contener como minimo 8 caracteres
+        </div>
+        <div *ngIf = "nombre.errors?.['maxlength']">
+          El nombre tiene que tener como maximo 45 caracteres
+        </div>
+      </div>
+
+      <label>Edad: </label>
+      <input type="number"
+      class="form-control"
+      id='edad'
+      [(ngModel)]="paciente.edad"
+      name="edad"
+      pattern="^(?!0$)([1-9]|[1-9][0-9]|1[0-9]{2}|200)$"
+      minlength="1"
+      maxlength="3"
+      placeholder="Digite la edad"
+      #edad = "ngModel"
+      required
+      >
+      <div class="alert alert-danger" *ngIf= "edad.invalid && (edad.dirty || edad.touched)">
+        <div *ngIf = "edad.errors?.['required']">
+          Ingrese la edad del paciente
+        </div>
+        <div *ngIf = "edad.errors?.['pattern']">
+          La edad debe ser un valor entero positivo menor que 200
+        </div>
+        <div *ngIf = "nombre.errors?.['maxlength']">
+          La edad debe ser menor a 4 digitos
+        </div>
+      </div>
+
+    <label>Telefono : </label>
+    <input type = "text"
+    class="form-control"
+    id = "telefono"
+    [(ngModel)] = "paciente.telefono"
+    name = "telefono"
+    required
+    pattern="^[0-9]+([,][0-9]+)?$"
+    minlength="8"
+    maxlength="15"
+    placeholder="Digite el telefono"
+    #telefono = "ngModel"
+    >
+    <div class="alert alert-danger" *ngIf= "telefono.invalid && (telefono.dirty || telefono.touched)">
+      <div *ngIf = "telefono.errors?.['required']">
+        Ingrese el telefono del paciente
+      </div>
+      <div *ngIf = "telefono.errors?.['pattern']">
+        El telefono debe ser numerico y con valores positivos
+      </div>
+      <div *ngIf = "telefono.errors?.['minlength']">
+        Debe contener al menos 8 digitos
+      </div>
+      <div *ngIf = "telefono.errors?.['maxlength']">
+        El telefono es muy grande
+      </div>
+    </div>
+
+    <label>Direccion : </label>
+    <input type = "text"
+    class="form-control"
+    id = "direccion"
+    [(ngModel)] = "paciente.direccion"
+    name = "direccion"
+    required
+    minlength="8"
+    maxlength="100"
+    placeholder="Digite la direccion"
+    #direccion = "ngModel"
+    >
+    <div class="alert alert-danger" *ngIf= "direccion.invalid && (direccion.dirty || direccion.touched)">
+      <div *ngIf = "direccion.errors?.['required']">
+        Ingrese la direccion del paciente
+      </div>
+      <div *ngIf = "direccion.errors?.['minlength']">
+        Debe contener al menos 8 digitos
+      </div>
+      <div *ngIf = "direccion.errors?.['maxlength']">
+        La direccion es muy grande
+      </div>
+    </div>
+
+    </div>
+    <button class="btn btn-success"   [disabled]= "!pacienteForm.form.valid">Guardar</button>
+    <button class="btn btn-secondary" (click)="botonAtras()" style="margin-left: 10px;">Atras</button>
+  </form>
+</div>
