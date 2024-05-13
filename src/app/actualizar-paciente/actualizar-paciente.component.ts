@@ -25,7 +25,6 @@ export class ActualizarPacienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.documento = this.route.snapshot.params['documento'];
-    console.log(this.documento)
     this.pacienteService.obtenerPacientePorId(this.documento).subscribe(dato =>{
     this.paciente = dato;
     },error => console.log(error));

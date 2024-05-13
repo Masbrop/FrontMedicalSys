@@ -11,7 +11,7 @@ const routes: Routes = [
   {path : 'iniciarSesion', component:LoginComponent},
   {path : 'listaPacientes/:documento', component:ListaPacientesComponent},
   {path : 'pacientesid/:documento', component:ListaPacienteIdComponent},
-  {path : 'registrarPaciente', component:RegistrarPacienteComponent},
+  {path : 'registrarPaciente/:documento', component:RegistrarPacienteComponent},
   {path : 'actualizarPaciente/:documento', component:ActualizarPacienteComponent},
 ];
 

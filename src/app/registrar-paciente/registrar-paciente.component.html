@@ -27,7 +27,7 @@
       <div *ngIf = "documento.errors?.['minlength']">
         Debe contener al menos 5 digitos
       </div>
-      <div *ngIf = "idDoctor.errors?.['maxlength']">
+      <div *ngIf = "documento.errors?.['maxlength']">
         El id es muy grande
       </div>
     </div>
@@ -130,35 +130,6 @@
       </div>
       <div *ngIf = "direccion.errors?.['maxlength']">
         La direccion es muy grande
-      </div>
-    </div>
-
-
-    <label>Id Doctor: </label>
-    <input type = "text"
-    class="form-control"
-    id = "idDoctor"
-    [(ngModel)] = "paciente.iddoctor"
-    name = "idDoctor"
-    required
-    pattern="^[0-9]+([,][0-9]+)?$"
-    minlength="5"
-    maxlength="20"
-    placeholder="Digite el id del doctor"
-    #idDoctor = "ngModel"
-    >
-    <div class="alert alert-danger" *ngIf= "idDoctor.invalid && (idDoctor.dirty || idDoctor.touched)">
-      <div *ngIf = "idDoctor.errors?.['required']">
-        Ingrese id del doctor
-      </div>
-      <div *ngIf = "idDoctor.errors?.['pattern']">
-        El id debe ser numerico y con valores positivos
-      </div>
-      <div *ngIf = "idDoctor.errors?.['minlength']">
-        Debe contener al menos 5 digitos
-      </div>
-      <div *ngIf = "idDoctor.errors?.['maxlength']">
-        El id es muy grande
       </div>
     </div>
 

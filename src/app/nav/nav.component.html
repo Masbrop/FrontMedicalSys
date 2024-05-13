@@ -9,7 +9,7 @@
           <a routerLink="/iniciarSesion" class="nav-link" href="#">Iniciar Sesión</a>
         </li>
         <li *ngIf="userLoginOn" class="nav-item">
-          <a routerLink="/pacientes" routerLinkActive="active" class="nav-link" href="#">Lista de pacientes</a>
+          <a (click)="botonAtras()" class="nav-link" href="#">Lista de pacientes</a>
         </li>
         <li *ngIf="userLoginOn" class="nav-item">
           <a routerLink="/registrarPaciente" routerLinkActive="active" class="nav-link" href="#">Nuevo paciente</a>

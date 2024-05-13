@@ -18,6 +18,13 @@ export class LoginComponent implements OnInit {
   doctor:Doctor = new Doctor();
   iddoctor:number;
   userLoginOn:boolean = false;
+  data = {
+    iddoctor: 0,
+    nombre: "",
+    contrasena: "",
+    autenticado: false
+  };
+
 
   constructor(
     private loginService:LoginService,
@@ -37,6 +44,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.loginDoctor(this.iddoctor);
+    console.log("Validacion login " + this.doctor["iddoctor"])
+    this.router.navigate(['/listaPacientes',this.doctor["iddoctor"]]);
   }
 
   loginDoctor(iddoctor:number){
