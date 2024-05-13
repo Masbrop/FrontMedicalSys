@@ -4,13 +4,15 @@ import { ListaPacientesComponent } from './lista-pacientes/lista-pacientes.compo
 import { RegistrarPacienteComponent } from './registrar-paciente/registrar-paciente.component';
 import { ActualizarPacienteComponent } from './actualizar-paciente/actualizar-paciente.component';
 import { ListaPacienteIdComponent } from './lista-paciente-id/lista-paciente-id.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  {path : '', component:LoginComponent, pathMatch:'full'},
+  {path : 'iniciarSesion', component:LoginComponent},
   {path : 'pacientes', component:ListaPacientesComponent},
-  {path : '', component:ListaPacientesComponent, pathMatch:'full'},
+  {path : 'pacientesid/:documento', component:ListaPacienteIdComponent},
   {path : 'registrarPaciente', component:RegistrarPacienteComponent},
   {path : 'actualizarPaciente/:documento', component:ActualizarPacienteComponent},
-  {path : 'pacientesid/:documento', component:ListaPacienteIdComponent}
 ];
 
 @NgModule({

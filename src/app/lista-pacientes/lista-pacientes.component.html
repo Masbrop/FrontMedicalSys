@@ -1,36 +1,37 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+<app-nav></app-nav>
+<body *ngIf="userLoginOn">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+  <h2 style="min-width: 300px;">Lista de pacientes</h2>
+  <div class="input-group" style="margin-bottom: 15px; width: 300px;">
+    <input type="text" class="form-control" placeholder="Documento" id='documento' name="documento" [(ngModel)]="documento"/>
+    <span class="input-group-text" (click)="buscarPacientePorIdRedireccion(documento)">
+      <i class="bi bi-search"></i>
+    </span>
+  </div>
 
-
-<h2 style="min-width: 300px;">Lista de pacientes</h2>
-<div class="input-group" style="margin-bottom: 15px; width: 300px;">
-  <input type="text" class="form-control" placeholder="Documento" id='documento' name="documento" [(ngModel)]="documento"/>
-  <span class="input-group-text" (click)="buscarPacientePorIdRedireccion(documento)">
-    <i class="bi bi-search"></i>
-  </span>
-</div>
-
-<table class="table table-striped" style="min-width: 750px;">
-  <thead class="table-dark">
-    <tr>
-      <th>Documento</th>
-      <th>Nombre</th>
-      <th>Edad</th>
-      <th>Telefono</th>
-      <th>Direccion</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor = "let paciente of pacientes">
-      <td>{{paciente.documento}}</td>
-      <td>{{paciente.nombre}}</td>
-      <td>{{paciente.edad}}</td>
-      <td>{{paciente.telefono}}</td>
-      <td>{{paciente.direccion}}</td>
-      <td>
-        <button (click)= "actualizarPaciente(paciente.documento)" class="btn btn-info">Editar</button>
-        <button (click)= "eliminarPaciente(paciente.documento)" class="btn btn-danger" style="margin-left: 10px;">Borrar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-striped" style="min-width: 750px;">
+    <thead class="table-dark">
+      <tr>
+        <th>Documento</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Telefono</th>
+        <th>Direccion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let paciente of pacientes">
+        <td>{{paciente.documento}}</td>
+        <td>{{paciente.nombre}}</td>
+        <td>{{paciente.edad}}</td>
+        <td>{{paciente.telefono}}</td>
+        <td>{{paciente.direccion}}</td>
+        <td>
+          <button (click)= "actualizarPaciente(paciente.documento)" class="btn btn-info">Editar</button>
+          <button (click)= "eliminarPaciente(paciente.documento)" class="btn btn-danger" style="margin-left: 10px;">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>

@@ -14,6 +14,7 @@ export class ListaPacientesComponent implements OnInit {
   pacientes:Paciente[];
   documento:number;
   idDoctor:number;
+  userLoginOn:boolean = false;
 
   constructor(
     private pacienteServicio:PacienteService,

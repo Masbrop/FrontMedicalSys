@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class RegistrarPacienteComponent implements OnInit {
 
   paciente:Paciente = new Paciente();
+  userLoginOn:boolean = false;
 
   constructor(
     private pacienteServicio:PacienteService,

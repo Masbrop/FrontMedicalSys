@@ -1,0 +1,14 @@
+<form [formGroup]="loginForm" #loginFor = "ngForm">
+  <div class="mb-3">
+    <input
+    placeholder="Digite el usuario"
+    formControlName="usuario" type="email" class="form-control"aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+    <input
+    placeholder="Digite la contraseña"
+    formControlName="contraseña" type="password" class="form-control">
+  </div>
+  <button (click)="login()" type="submit" class="btn btn-primary" [disabled]= "!loginFor.form.valid">Iniciar Sesión</button>
+</form>

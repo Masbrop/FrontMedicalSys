@@ -11,7 +11,9 @@ export class PacienteService {
   //Url para obtener el listado de los pacientes
   private baseURL = "http://localhost:8080/api/MedicaSys/pacientes";
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(
+    private httpClient : HttpClient
+  ) { }
 
   //Metodo que obtiene los pacientes
   obtenerListaPacientes():Observable<Paciente[]>{

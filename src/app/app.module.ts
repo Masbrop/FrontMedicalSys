@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { ListaPacientesComponent } from './lista-pacientes/lista-pacientes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarPacienteComponent } from './registrar-paciente/registrar-paciente.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActualizarPacienteComponent } from './actualizar-paciente/actualizar-paciente.component';
 import { ListaPacienteIdComponent } from './lista-paciente-id/lista-paciente-id.component';
+import { NavComponent } from './nav/nav.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { ListaPacienteIdComponent } from './lista-paciente-id/lista-paciente-id.
     ListaPacientesComponent,
     RegistrarPacienteComponent,
     ActualizarPacienteComponent,
-    ListaPacienteIdComponent
+    ListaPacienteIdComponent,
+    NavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

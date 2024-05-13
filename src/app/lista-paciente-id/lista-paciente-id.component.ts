@@ -12,6 +12,8 @@ export class ListaPacienteIdComponent implements OnInit {
 
   documento:number;
   idDoctor:number;
+  userLoginOn:boolean = false;
+
   paciente:Paciente = new Paciente();
   constructor(
     private pacienteServicio:PacienteService,
