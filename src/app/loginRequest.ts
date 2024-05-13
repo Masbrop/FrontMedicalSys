@@ -1,4 +1,4 @@
 export interface LoginRequest{
-  usuario:string,
+  id_doctor:number,
   contrasela:string
 }

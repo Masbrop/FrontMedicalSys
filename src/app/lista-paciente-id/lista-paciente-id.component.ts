@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../paciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Paciente } from '../paciente';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-lista-paciente-id',
@@ -11,22 +12,31 @@ import { Paciente } from '../paciente';
 export class ListaPacienteIdComponent implements OnInit {
 
   documento:number;
-  idDoctor:number;
+  iddoctor:number;
   userLoginOn:boolean = false;
 
   paciente:Paciente = new Paciente();
   constructor(
     private pacienteServicio:PacienteService,
     private router:Router,
+    private loginService:LoginService,
     private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.idDoctor = this.route.snapshot.params['idDoctor'];
+    this.iddoctor = this.route.snapshot.params['iddoctor'];
     this.documento = this.route.snapshot.params['documento'];
     this.pacienteServicio.obtenerPacientePorId(this.documento).subscribe(dato => {
       this.paciente = dato;
     },error => console.log(error));
+
+    this.loginService.UserLoginOn.subscribe(
+      {
+        next:(userLoginOn) =>{
+          this.userLoginOn = userLoginOn;
+        }
+      }
+    )
   }
 
   actualizarPaciente(documento:number){

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../paciente';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { PacienteService } from '../paciente.service';
 import { Observable } from 'rxjs';
+import { LoginService } from '../login.service';
+import { Doctor } from '../doctor';
 
 @Component({
   selector: 'app-lista-pacientes',
@@ -13,22 +15,42 @@ export class ListaPacientesComponent implements OnInit {
 
   pacientes:Paciente[];
   documento:number;
-  idDoctor:number;
+  iddoctor:number;
   userLoginOn:boolean = false;
+  doctor:Doctor;
 
   constructor(
     private pacienteServicio:PacienteService,
-    private router:Router
+    private loginService:LoginService,
+    private router:Router,
+    private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.obtenerPaciente();
+    this.loginService.UserLoginOn.subscribe(
+      {
+        next:(userLoginOn) =>{
+          this.userLoginOn = userLoginOn;
+        }
+      }
+    )
+    this.loginService.UserData.subscribe(
+      {
+        next:(doctor)=>{
+          this.doctor=doctor;
+        }
+      }
+    )
+    this.obtenerListaPacientesPorDoctor();
   }
 
-  private obtenerPaciente(){
-    this.pacienteServicio.obtenerListaPacientes().subscribe(dato => {
-      this.pacientes = dato;
-    })
+  private obtenerListaPacientesPorDoctor(){
+    try{
+      this.pacienteServicio.obtenerListaPacientesPorDoctor(this.doctor.iddoctor).subscribe(dato => {
+        this.pacientes = dato;
+      })
+    }catch(error){
+    }
   }
 
   actualizarPaciente(documento:number){
@@ -45,7 +67,7 @@ export class ListaPacientesComponent implements OnInit {
 
   buscarPacientePorId(documento:number){
     this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
-      this.router.navigate(['/pacientes']);
+      //this.router.navigate(['/pacientes']);
     },error => console.log(error));
   }
 

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { Doctor } from '../doctor';
+import { PacienteService } from '../paciente.service';
+import { Paciente } from '../paciente';
 import { LoginRequest } from '../loginRequest';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,29 +13,34 @@ import { LoginRequest } from '../loginRequest';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm=this.formBuilder.group({
-    usuario:['',Validators.required],
-    contraseña:['',Validators.required]
-  })
+
+  paciente:Paciente = new Paciente();
+  doctor:Doctor = new Doctor();
+  iddoctor:number;
+  userLoginOn:boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private loginService:LoginService,
     private router:Router,
-    private loginService:LoginService
+    private pacienteServicio:PacienteService
   ) {}
 
   ngOnInit(): void {
+    this.loginService.UserData.subscribe(
+      {
+        next:(doctor)=>{
+          this.doctor=doctor;
+        }
+      }
+    )
   }
 
-  login(){
-    if(this.loginForm.valid){
-      this.loginService.registrarDoctor(this.loginForm.value)
-      console.log(this.loginForm.value)
-      //this.router.navigate(['/pacientes'])
-      this.loginForm.reset();
-    }else{
-      alert("Error al ingresar los datos");
-    }
+  onSubmit(){
+    this.loginDoctor(this.iddoctor);
+  }
+
+  loginDoctor(iddoctor:number){
+    this.loginService.login(this.doctor)
   }
 
 }

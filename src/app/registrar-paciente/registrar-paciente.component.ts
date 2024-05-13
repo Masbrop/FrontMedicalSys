@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../paciente';
 import { PacienteService } from '../paciente.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-registrar-paciente',
@@ -15,10 +16,18 @@ export class RegistrarPacienteComponent implements OnInit {
 
   constructor(
     private pacienteServicio:PacienteService,
+    private loginService:LoginService,
     private router:Router
   ) { }
 
   ngOnInit(): void {
+    this.loginService.UserLoginOn.subscribe(
+      {
+        next:(userLoginOn) =>{
+          this.userLoginOn = userLoginOn;
+        }
+      }
+    )
   }
 
   guardarPaciente(){

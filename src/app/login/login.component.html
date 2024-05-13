@@ -1,14 +1,41 @@
-<form [formGroup]="loginForm" #loginFor = "ngForm">
-  <div class="mb-3">
-    <input
-    placeholder="Digite el usuario"
-    formControlName="usuario" type="email" class="form-control"aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-    <input
+<app-nav></app-nav>
+  <form (ngSubmit)= "onSubmit()" #doctorForm = "ngForm">
+    <div class="form-group">
+
+      <label>Usuario: </label>
+    <input type = "number"
+    class="form-control"
+    id = "documento"
+    [(ngModel)] ="doctor.iddoctor"
+    name = "documento"
+    required
+    maxlength="20"
+    placeholder="Digite el documento"
+    #iddoctor = "ngModel"
+    >
+    <div class="alert alert-danger" *ngIf= "iddoctor.invalid && (iddoctor.dirty || iddoctor.touched)">
+      <div *ngIf = "iddoctor.errors?.['required']">
+        Ingrese el usuario
+      </div>
+    </div>
+
+    <label>Contraseña: </label>
+    <input type = "text"
+    class="form-control"
+    id = "idDoctor"
+    [(ngModel)] = "doctor.contrasena"
+    name = "idDoctor"
+    required
+    maxlength="25"
     placeholder="Digite la contraseña"
-    formControlName="contraseña" type="password" class="form-control">
-  </div>
-  <button (click)="login()" type="submit" class="btn btn-primary" [disabled]= "!loginFor.form.valid">Iniciar Sesión</button>
-</form>
+    #contrasena = "ngModel"
+    >
+    <div class="alert alert-danger" *ngIf= "contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+      <div *ngIf = "contrasena.errors?.['required']">
+        Ingrese la contraseña
+      </div>
+    </div>
+
+    </div>
+    <button (click)="loginDoctor(doctor.iddoctor)" class="btn btn-success"   [disabled]= "!doctorForm.form.valid">Guardar</button>
+    </form>

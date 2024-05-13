@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {path : '', component:LoginComponent, pathMatch:'full'},
   {path : 'iniciarSesion', component:LoginComponent},
-  {path : 'pacientes', component:ListaPacientesComponent},
+  {path : 'listaPacientes/:documento', component:ListaPacientesComponent},
   {path : 'pacientesid/:documento', component:ListaPacienteIdComponent},
   {path : 'registrarPaciente', component:RegistrarPacienteComponent},
   {path : 'actualizarPaciente/:documento', component:ActualizarPacienteComponent},
