@@ -20,10 +20,16 @@ export class NavComponent implements OnInit {
 
   constructor(
     private loginService:LoginService,
-    private route:ActivatedRoute,
     private pacienteServicio:PacienteService,
-    private router:Router
-  ) { }
+    private route:ActivatedRoute,
+    private router:Router,
+    private activateRoute:ActivatedRoute
+
+  ) {
+    this.activateRoute.params.subscribe( parametro => {
+      this.iddoctor = parametro['documento']
+    })
+   }
 
   ngOnInit(): void {
     this.documento = this.route.snapshot.params['documento'];
@@ -44,17 +50,16 @@ export class NavComponent implements OnInit {
     )
   }
 
-
-  botonAtras(){
-    console.log("nav " + this.doctor.iddoctor)
-    this.router.navigate(['/listaPacientes',this.doctor.iddoctor]);
-  }
-
   public ListaPacientes(){
-    console.log("Nav: " + this.doctor.iddoctor);
-    //this.router.navigate(['/listaPacientes',this.doctor.iddoctor]);
+    this.router.navigate(['/listaPacientes',this.iddoctor]);
   }
 
+  public RegistrarPaciente(){
+    this.router.navigate(['/registrarPaciente',this.iddoctor]);
+  }
 
-
+  public CerrarSesion(){
+    this.router.navigate(['/iniciarSesion']);
+    this.loginService.currentUserLoginOn.next(false);
+  }
 }

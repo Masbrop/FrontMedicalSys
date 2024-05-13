@@ -37,22 +37,24 @@ export class LoginService {
       (data: any )=> {
         if(data["autenticado"]){
           this.currentUserLoginOn.next(true);
-
         }
       }
     )
+  }
+
+  logout(){
+    this.currentUserLoginOn.next(false);
   }
 
   get UserData():Observable<Doctor>{
     return this.currentUserData.asObservable();
   }
 
-  get UserDataGeneral():Observable<Doctor>{
-    return this.currentUserDataGeneral.asObservable();
-  }
-
   get UserLoginOn():Observable<boolean>{
     return this.currentUserLoginOn.asObservable();
   }
 
+  get UserDataGeneral():Observable<Doctor>{
+    return this.currentUserDataGeneral.asObservable();
+  }
 }

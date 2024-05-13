@@ -6,16 +6,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li *ngIf="!userLoginOn" class="nav-item">
-          <a routerLink="/iniciarSesion" class="nav-link" href="#">Iniciar Sesión</a>
+          <a routerLink="/iniciarSesion" class="nav-link">Iniciar Sesión</a>
         </li>
         <li *ngIf="userLoginOn" class="nav-item">
-          <a (click)="botonAtras()" class="nav-link" href="#">Lista de pacientes</a>
+          <a routerLink="" (click)="ListaPacientes()" class="nav-link">Lista de pacientes</a>
         </li>
         <li *ngIf="userLoginOn" class="nav-item">
-          <a routerLink="/registrarPaciente" routerLinkActive="active" class="nav-link" href="#">Nuevo paciente</a>
+          <a routerLink="/" (click)="RegistrarPaciente()" class="nav-link">Nuevo paciente</a>
         </li>
         <li *ngIf="userLoginOn" class="nav-item">
-          <a routerLink="/iniciarSesion" class="nav-link" href="#">Cerrar Sesion</a>
+          <a routerLink="/" (click)="CerrarSesion()" class="nav-link">Cerrar Sesion</a>
         </li>
       </ul>
     </div>
