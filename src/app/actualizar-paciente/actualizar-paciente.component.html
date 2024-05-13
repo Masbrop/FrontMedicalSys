@@ -52,7 +52,7 @@
         </div>
       </div>
 
-    <label>Telefono : </label>
+    <label>Teléfono : </label>
     <input type = "text"
     class="form-control"
     id = "telefono"
@@ -62,25 +62,25 @@
     pattern="^[0-9]+([,][0-9]+)?$"
     minlength="8"
     maxlength="15"
-    placeholder="Digite el telefono"
+    placeholder="Digite el teléfono"
     #telefono = "ngModel"
     >
     <div class="alert alert-danger" *ngIf= "telefono.invalid && (telefono.dirty || telefono.touched)">
       <div *ngIf = "telefono.errors?.['required']">
-        Ingrese el telefono del paciente
+        Ingrese el teléfono del paciente
       </div>
       <div *ngIf = "telefono.errors?.['pattern']">
-        El telefono debe ser numerico y con valores positivos
+        El teléfono debe ser numerico y con valores positivos
       </div>
       <div *ngIf = "telefono.errors?.['minlength']">
         Debe contener al menos 8 digitos
       </div>
       <div *ngIf = "telefono.errors?.['maxlength']">
-        El telefono es muy grande
+        El teléfono es muy grande
       </div>
     </div>
 
-    <label>Direccion : </label>
+    <label>Dirección : </label>
     <input type = "text"
     class="form-control"
     id = "direccion"
@@ -89,12 +89,12 @@
     required
     minlength="8"
     maxlength="100"
-    placeholder="Digite la direccion"
+    placeholder="Digite la dirección"
     #direccion = "ngModel"
     >
     <div class="alert alert-danger" *ngIf= "direccion.invalid && (direccion.dirty || direccion.touched)">
       <div *ngIf = "direccion.errors?.['required']">
-        Ingrese la direccion del paciente
+        Ingrese la dirección del paciente
       </div>
       <div *ngIf = "direccion.errors?.['minlength']">
         Debe contener al menos 8 digitos
@@ -106,6 +106,6 @@
 
     </div>
     <button class="btn btn-success"   [disabled]= "!pacienteForm.form.valid">Guardar</button>
-    <button class="btn btn-secondary" (click)="botonAtras()" style="margin-left: 10px;">Atras</button>
+    <button class="btn btn-secondary" (click)="botonAtras()" style="margin-left: 10px;">Atrás</button>
   </form>
 </div>

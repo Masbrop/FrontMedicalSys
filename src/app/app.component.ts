@@ -8,5 +8,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Sistema de gestion de pacientes';
+  title = 'Sistema de gestión de pacientes';
 }

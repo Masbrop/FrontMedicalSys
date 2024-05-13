@@ -37,6 +37,7 @@ export class ListaPacienteIdComponent implements OnInit {
         }
       }
     )
+
   }
 
   actualizarPaciente(documento:number){
@@ -54,6 +55,27 @@ export class ListaPacienteIdComponent implements OnInit {
   }
 
   buscarPacientePorIdRedireccion(documento:number){
+    try {
+      this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
+        this.router.navigate(['/pacientesid',documento]);
+        this.listarnuevamentePaciente(documento);
+      },error => {
+        console.log('No se encontro el paciente con documento: ' + documento);
+        alert('No se encontro el paciente con documento: ' + documento);
+
+      });
+    }catch (error) {
+    }
+  }
+
+  listarnuevamentePaciente(documento:number){
+    this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
+      this.paciente = dato;
+    })
+  }
+
+  /*
+  buscarPacientePorIdRedireccion(documento:number){
     this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
       this.pacienteServicio.obtenerPacientePorId(this.documento).subscribe(dato => {
         this.paciente = dato;
@@ -61,6 +83,7 @@ export class ListaPacienteIdComponent implements OnInit {
       this.router.navigate(['/pacientesid',documento]);
     },error => console.log(error));
   }
+  */
 
   onSubmit(documento:number){
     this.buscarPacientePorIdRedireccion(documento);
