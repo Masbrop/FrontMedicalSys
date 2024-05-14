@@ -5,5 +5,6 @@ export class Paciente {
   edad:number;
   telefono:number;
   direccion:string;
-  iddoctor:number
+  iddoctor:number;
+  historial:string;
 }
