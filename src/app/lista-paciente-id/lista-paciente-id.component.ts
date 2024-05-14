@@ -44,8 +44,8 @@ export class ListaPacienteIdComponent implements OnInit {
     this.router.navigate(['actualizarPaciente',documento]);
   }
 
-  registrarPaciente(iddoctor:number){
-    this.router.navigate(['registrarPaciente',iddoctor]);
+  registrarHistorialPaciente(documento:number){
+    this.router.navigate(['historialPaciente',documento]);
   }
 
   eliminarPaciente(documento:number){
@@ -73,17 +73,6 @@ export class ListaPacienteIdComponent implements OnInit {
       this.paciente = dato;
     })
   }
-
-  /*
-  buscarPacientePorIdRedireccion(documento:number){
-    this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
-      this.pacienteServicio.obtenerPacientePorId(this.documento).subscribe(dato => {
-        this.paciente = dato;
-      },error => console.log(error));
-      this.router.navigate(['/pacientesid',documento]);
-    },error => console.log(error));
-  }
-  */
 
   onSubmit(documento:number){
     this.buscarPacientePorIdRedireccion(documento);

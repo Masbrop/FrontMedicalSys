@@ -57,8 +57,8 @@ export class ListaPacientesComponent implements OnInit {
     this.router.navigate(['actualizarPaciente',documento]);
   }
 
-  registrarPaciente(iddoctor:number){
-    this.router.navigate(['registrarPaciente',iddoctor]);
+  registrarHistorialPaciente(documento:number){
+    this.router.navigate(['historialPaciente',documento]);
   }
 
   eliminarPaciente(documento:number){

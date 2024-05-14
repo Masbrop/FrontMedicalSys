@@ -11,6 +11,7 @@ export class PacienteService {
   //Url para obtener el listado de los pacientes
   private baseURL = "http://localhost:8080/api/MedicaSys/pacientes";
   private ObtenerPacienteURL = "http://localhost:8080/api/MedicaSys/obtenerPacientes";
+  private HistorialURL = "http://localhost:8080/api/MedicaSys/historial";
 
   constructor(
     private httpClient : HttpClient
@@ -34,6 +35,11 @@ export class PacienteService {
   //Actualizar paciente
   ActualizarPaciente(documento:number, paciente:Paciente):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${documento}`, paciente);
+  }
+
+  //Actualizar historial paciente
+  ActualizarHistorialPaciente(documento:number, paciente:Paciente):Observable<Object>{
+    return this.httpClient.put(`${this.HistorialURL}/${documento}`, paciente);
   }
 
   //Obtener paciente por id

@@ -1,41 +1,40 @@
 <app-nav></app-nav>
-  <form (ngSubmit)= "onSubmit()" #doctorForm = "ngForm">
-    <div class="form-group">
+<body>
+    <div class="login-container" >
+        <h1>Iniciar Sesión</h1>
+        <form (ngSubmit)= "onSubmit()" #doctorForm = "ngForm">
+            <label>Documento: </label>
+            <input type = "text"
+            id = "documento"
+            [(ngModel)] ="doctor.iddoctor"
+            name = "documento"
+            required
+            maxlength="20"
+            placeholder="Usuario"
+            #iddoctor = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf= "iddoctor.invalid && (iddoctor.dirty || iddoctor.touched)">
+              <div *ngIf = "iddoctor.errors?.['required']">
+                Ingrese el usuario
+              </div>
+            </div>
 
-      <label>Usuario: </label>
-    <input type = "number"
-    class="form-control"
-    id = "documento"
-    [(ngModel)] ="doctor.iddoctor"
-    name = "documento"
-    required
-    maxlength="20"
-    placeholder="Digite el documento"
-    #iddoctor = "ngModel"
-    >
-    <div class="alert alert-danger" *ngIf= "iddoctor.invalid && (iddoctor.dirty || iddoctor.touched)">
-      <div *ngIf = "iddoctor.errors?.['required']">
-        Ingrese el usuario
-      </div>
+            <label>Contraseña: </label>
+            <input type = "text"
+            id = "idDoctor"
+            [(ngModel)] = "doctor.contrasena"
+            name = "idDoctor"
+            required
+            maxlength="25"
+            placeholder="Digite la contraseña"
+            #contrasena = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf= "contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+              <div *ngIf = "contrasena.errors?.['required']">
+                Ingrese la contraseña
+              </div>
+            </div>
+              <button class="btn btn-success"   [disabled]= "!doctorForm.form.valid">Guardar</button>
+        </form>
     </div>
-
-    <label>Contraseña: </label>
-    <input type = "text"
-    class="form-control"
-    id = "idDoctor"
-    [(ngModel)] = "doctor.contrasena"
-    name = "idDoctor"
-    required
-    maxlength="25"
-    placeholder="Digite la contraseña"
-    #contrasena = "ngModel"
-    >
-    <div class="alert alert-danger" *ngIf= "contrasena.invalid && (contrasena.dirty || contrasena.touched)">
-      <div *ngIf = "contrasena.errors?.['required']">
-        Ingrese la contraseña
-      </div>
-    </div>
-
-    </div>
-    <button class="btn btn-success"   [disabled]= "!doctorForm.form.valid">Guardar</button>
-    </form>
+</body>

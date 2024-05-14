@@ -1,0 +1,74 @@
+  <h3 class="text-center">Registrar doctor</h3>
+  <form (ngSubmit)= "onSubmit()" #doctorForm = "ngForm">
+    <div class="form-group">
+
+    <label>Documento: </label>
+    <input type = "number"
+    class="form-control"
+    id = "iddoctor"
+    [(ngModel)] = "doctor.iddoctor"
+    name = "iddoctor"
+    required
+    pattern="^[0-9]+([,][0-9]+)?$"
+    minlength="5"
+    maxlength="20"
+    placeholder="Digite el documento"
+    #iddoctor = "ngModel"
+    >
+    <div class="alert alert-danger" *ngIf= "iddoctor.invalid && (iddoctor.dirty || iddoctor.touched)">
+      <div *ngIf = "iddoctor.errors?.['required']">
+        Ingrese el documento
+      </div>
+      <div *ngIf = "iddoctor.errors?.['pattern']">
+        El documento debe ser numerico y con valores positivos
+      </div>
+      <div *ngIf = "iddoctor.errors?.['minlength']">
+        Debe contener al menos 5 digitos
+      </div>
+      <div *ngIf = "iddoctor.errors?.['maxlength']">
+        El id es muy grande
+      </div>
+    </div>
+
+      <label>Nombre: </label>
+      <input type="text"
+      class="form-control"
+      id='nombre'
+      [(ngModel)]="doctor.nombre"
+      name="nombre"
+      required
+      minlength="8"
+      maxlength="45"
+      placeholder="Digite el nombre"
+      #nombre = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf = "nombre.errors?.['required']">
+          Ingrese el nombre
+        </div>
+        <div *ngIf = "nombre.errors?.['minlength']">
+          El nombre tiene que contener como minimo 8 caracteres
+        </div>
+        <div *ngIf = "nombre.errors?.['maxlength']">
+          El nombre tiene que tener como maximo 45 caracteres
+        </div>
+      </div>
+
+      <label>Contraseña: </label>
+      <input type="text"
+      class="form-control"
+      id='contraseña'
+      [(ngModel)]="doctor.contrasena"
+      name="edad"
+      placeholder="Digite la contraseña"
+      #contrasena = "ngModel"
+      required
+      >
+      <div class="alert alert-danger" *ngIf= "contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+        <div *ngIf = "contrasena.errors?.['required']">
+          Ingrese la contraseña
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success"   [disabled]= "!doctorForm.form.valid">Guardar</button>
+  </form>

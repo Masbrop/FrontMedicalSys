@@ -11,6 +11,8 @@ import { ActualizarPacienteComponent } from './actualizar-paciente/actualizar-pa
 import { ListaPacienteIdComponent } from './lista-paciente-id/lista-paciente-id.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrarDoctorComponent } from './registrar-doctor/registrar-doctor.component';
+import { HistorialPacienteComponent } from './historial-paciente/historial-paciente.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LoginComponent } from './login/login.component';
     ActualizarPacienteComponent,
     ListaPacienteIdComponent,
     NavComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrarDoctorComponent,
+    HistorialPacienteComponent
   ],
   imports: [
     BrowserModule,

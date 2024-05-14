@@ -13,7 +13,6 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   paciente:Paciente = new Paciente();
   doctor:Doctor = new Doctor();
   iddoctor:number;
@@ -33,6 +32,13 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loginService.UserLoginOn.subscribe(
+      {
+        next:(userLoginOn) =>{
+          this.userLoginOn = userLoginOn;
+        }
+      }
+    )
     this.loginService.UserData.subscribe(
       {
         next:(doctor)=>{
@@ -45,7 +51,16 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.loginDoctor(this.iddoctor);
     console.log("Validacion login " + this.doctor["iddoctor"])
-    this.router.navigate(['/listaPacientes',this.doctor["iddoctor"]]);
+    this.loginService.UserLoginOn.subscribe({next:(userLoginOn)=>{this.userLoginOn = userLoginOn;}})
+
+    setTimeout(() => {
+    if(this.userLoginOn){
+      this.router.navigate(['/listaPacientes',this.doctor["iddoctor"]]);
+    }else{
+      console.log('Usuario o contraseña incorrectos');
+      alert('Usuario o contraseña incorrectos');
+    }
+    }, 100);
   }
 
   loginDoctor(iddoctor:number){
