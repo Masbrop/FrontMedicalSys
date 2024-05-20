@@ -1,8 +1,8 @@
 <div *ngIf="userLoginOn" class="col-md-6 offset-md-3">
-  <h3 class="text-center" style="margin: 30px;">Edición del historial del Paciente</h3>
+  <h3 class="text-center" style="margin: 30px; min-width: 250px;">Historial clinico del paciente</h3>
   <div style="display: flex; flex-direction: column;">
-    <textarea [(ngModel)]="paciente.historial" rows="10"></textarea>
-    <button class="btn btn-success"  (click)="onSubmit()" style="margin-top: 10px;">Guardar</button>
-    <button class="btn btn-secondary" (click)="botonAtras()" style="margin-top: 10px;">Atrás</button>
+    <textarea [(ngModel)]="paciente.historial" rows="10" style="min-width: 250px;"></textarea>
+    <button class="btn btn-success"  (click)="onSubmit()" style="margin-top: 10px; min-width: 250px;">Guardar</button>
+    <button class="btn btn-secondary" (click)="botonAtras()" style="margin-top: 10px; min-width: 250px;">Atrás</button>
   </div>
 </div>

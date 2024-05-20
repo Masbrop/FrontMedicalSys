@@ -3,8 +3,11 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div id="navbarNav" style="min-width: 300px;">
       <ul class="navbar-nav">
+        <li *ngIf="userLoginOn" class="nav-item">
+          <span class="nav-link" style="color: azure;">{{nombre}}</span>
+        </li>
         <li *ngIf="!userLoginOn" class="nav-item">
           <a routerLink="/iniciarSesion" class="nav-link">Iniciar Sesión</a>
         </li>

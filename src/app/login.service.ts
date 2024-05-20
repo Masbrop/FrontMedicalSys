@@ -37,9 +37,12 @@ export class LoginService {
       (data: any )=> {
         if(data["autenticado"]){
           this.currentUserLoginOn.next(true);
-        }
-      }
-    )
+        }})
+  }
+
+  //Obtener doctor por id
+  obtenerDoctorPorId(documento:number):Observable<Doctor>{
+    return this.httpClient.get<Doctor>(`${this.baseURL}/${documento}`);
   }
 
   logout(){

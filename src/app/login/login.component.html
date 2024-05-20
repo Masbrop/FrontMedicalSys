@@ -3,14 +3,14 @@
     <div class="login-container" >
         <h1>Iniciar Sesión</h1>
         <form (ngSubmit)= "onSubmit()" #doctorForm = "ngForm">
-            <label>Documento: </label>
+            <label>Usuario: </label>
             <input type = "text"
             id = "documento"
-            [(ngModel)] ="doctor.iddoctor"
+            [(ngModel)] ="iddoctorString"
             name = "documento"
             required
             maxlength="20"
-            placeholder="Usuario"
+            placeholder="Digite el usuario"
             #iddoctor = "ngModel"
             >
             <div class="alert alert-danger" *ngIf= "iddoctor.invalid && (iddoctor.dirty || iddoctor.touched)">
@@ -20,7 +20,7 @@
             </div>
 
             <label>Contraseña: </label>
-            <input type = "text"
+            <input type = "password"
             id = "idDoctor"
             [(ngModel)] = "doctor.contrasena"
             name = "idDoctor"

@@ -13,7 +13,9 @@ import { Paciente } from '../paciente';
 export class NavComponent implements OnInit {
   userLoginOn:boolean = false;
   doctor:Doctor;
+  doctorpeticion:Doctor;
   iddoctor:number;
+  nombre:string;
   documento:number;
   pacientes:Paciente[];
   paciente:Paciente = new Paciente();
@@ -23,31 +25,29 @@ export class NavComponent implements OnInit {
     private pacienteServicio:PacienteService,
     private route:ActivatedRoute,
     private router:Router,
-    private activateRoute:ActivatedRoute
-
+    private activateRoute:ActivatedRoute,
   ) {
     this.activateRoute.params.subscribe( parametro => {
-      this.iddoctor = parametro['documento']
+      this.iddoctor = parametro['iddoctor']
     })
    }
 
   ngOnInit(): void {
-    this.documento = this.route.snapshot.params['documento'];
-    this.loginService.UserLoginOn.subscribe(
-      {
-        next:(userLoginOn) =>{
-          this.userLoginOn = userLoginOn;
-        }
-      }
-    )
+    this.iddoctor = this.route.snapshot.params['iddoctor'];
 
-    this.loginService.UserData.subscribe(
-      {
-        next:(doctor)=>{
-          this.doctor=doctor;
-        }
+    this.loginService.UserLoginOn.subscribe({next:(userLoginOn) =>{this.userLoginOn = userLoginOn;}})
+    this.loginService.UserData.subscribe({next:(doctor)=>{this.doctor=doctor;}})
+
+    if(this.userLoginOn){
+      try{
+        this.loginService.obtenerDoctorPorId(this.iddoctor).subscribe(dato => {
+          this.doctorpeticion = dato;
+          this.nombre = this.doctorpeticion.nombre;
+        })
+      }catch(error){
       }
-    )
+    }
+
   }
 
   public ListaPacientes(){

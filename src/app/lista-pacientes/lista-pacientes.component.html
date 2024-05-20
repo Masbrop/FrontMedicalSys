@@ -9,7 +9,7 @@
     </span>
   </div>
 
-  <table class="table table-striped" style="min-width: 750px;">
+  <table class="table table-striped" style="min-width: 100px;">
     <thead class="table-dark">
       <tr>
         <th>Documento</th>
@@ -28,7 +28,7 @@
         <td>{{paciente.telefono}}</td>
         <td>{{paciente.direccion}}</td>
         <td>
-          <button (click)= "actualizarPaciente(paciente.documento)" class="btn btn-info">Editar</button>
+          <button (click)= "actualizarPaciente(paciente.documento)" class="btn btn-info" style="margin-left: 10px;">Editar</button>
           <button (click)= "eliminarPaciente(paciente.documento)" class="btn btn-danger" style="margin-left: 10px;">Borrar</button>
           <button (click)= "registrarHistorialPaciente(paciente.documento)" class="btn btn-success" style="margin-left: 10px;">Historial</button>
         </td>

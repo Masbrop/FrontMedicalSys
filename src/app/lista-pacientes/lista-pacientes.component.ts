@@ -27,21 +27,14 @@ export class ListaPacientesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loginService.UserLoginOn.subscribe(
-      {
-        next:(userLoginOn) =>{
-          this.userLoginOn = userLoginOn;
-        }
-      }
-    )
-    this.loginService.UserData.subscribe(
-      {
-        next:(doctor)=>{
-          this.doctor=doctor;
-        }
-      }
-    )
+    this.loginService.UserLoginOn.subscribe({next:(userLoginOn) =>{this.userLoginOn = userLoginOn;}})
+    this.loginService.UserData.subscribe({next:(doctor)=>{this.doctor=doctor;}})
+
     this.obtenerListaPacientesPorDoctor();
+
+    this.route.params.subscribe(params => {
+      this.iddoctor = params['iddoctor'];
+    });
   }
 
   private obtenerListaPacientesPorDoctor(){
@@ -78,7 +71,7 @@ export class ListaPacientesComponent implements OnInit {
   buscarPacientePorIdRedireccion(documento:number){
     try {
       this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
-        this.router.navigate(['/pacientesid',documento]);
+        this.router.navigate(['/pacientesid',this.iddoctor,documento]);
       },error => {
         console.log('No se encontro el paciente con documento: ' + documento);
         alert('No se encontro el paciente con documento: ' + documento);

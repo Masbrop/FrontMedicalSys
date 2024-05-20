@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   paciente:Paciente = new Paciente();
   doctor:Doctor = new Doctor();
   iddoctor:number;
+  iddoctorString:string;
   userLoginOn:boolean = false;
   data = {
     iddoctor: 0,
@@ -49,10 +50,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+    this.iddoctor = Number(this.iddoctorString);
+    this.doctor["iddoctor"] = Number(this.iddoctorString);
     this.loginDoctor(this.iddoctor);
-    console.log("Validacion login " + this.doctor["iddoctor"])
     this.loginService.UserLoginOn.subscribe({next:(userLoginOn)=>{this.userLoginOn = userLoginOn;}})
-
     setTimeout(() => {
     if(this.userLoginOn){
       this.router.navigate(['/listaPacientes',this.doctor["iddoctor"]]);

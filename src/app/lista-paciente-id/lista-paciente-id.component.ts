@@ -12,8 +12,9 @@ import { LoginService } from '../login.service';
 export class ListaPacienteIdComponent implements OnInit {
 
   documento:number;
-  iddoctor:number;
+  iddoctorURL:number;
   userLoginOn:boolean = false;
+  validacionDoctorVar:boolean = false;
 
   paciente:Paciente = new Paciente();
   constructor(
@@ -24,19 +25,16 @@ export class ListaPacienteIdComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.iddoctor = this.route.snapshot.params['iddoctor'];
+    this.iddoctorURL = this.route.snapshot.params['iddoctor'];
     this.documento = this.route.snapshot.params['documento'];
+
     this.pacienteServicio.obtenerPacientePorId(this.documento).subscribe(dato => {
       this.paciente = dato;
+      if(this.iddoctorURL == this.paciente.iddoctor) this.validacionDoctorVar = true;
     },error => console.log(error));
 
-    this.loginService.UserLoginOn.subscribe(
-      {
-        next:(userLoginOn) =>{
-          this.userLoginOn = userLoginOn;
-        }
-      }
-    )
+
+    this.loginService.UserLoginOn.subscribe({next:(userLoginOn) =>{this.userLoginOn = userLoginOn;}})
 
   }
 
@@ -54,19 +52,6 @@ export class ListaPacienteIdComponent implements OnInit {
     })
   }
 
-  buscarPacientePorIdRedireccion(documento:number){
-    try {
-      this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
-        this.router.navigate(['/pacientesid',documento]);
-        this.listarnuevamentePaciente(documento);
-      },error => {
-        console.log('No se encontro el paciente con documento: ' + documento);
-        alert('No se encontro el paciente con documento: ' + documento);
-
-      });
-    }catch (error) {
-    }
-  }
 
   listarnuevamentePaciente(documento:number){
     this.pacienteServicio.obtenerPacientePorId(documento).subscribe(dato => {
@@ -74,7 +59,5 @@ export class ListaPacienteIdComponent implements OnInit {
     })
   }
 
-  onSubmit(documento:number){
-    this.buscarPacientePorIdRedireccion(documento);
-  }
+
 }
