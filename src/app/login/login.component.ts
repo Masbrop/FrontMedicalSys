@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       console.log('Usuario o contraseña incorrectos');
       alert('Usuario o contraseña incorrectos');
     }
-    }, 100);
+    }, 500);
   }
 
   loginDoctor(iddoctor:number){

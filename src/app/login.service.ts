@@ -26,7 +26,7 @@ export class LoginService {
     private httpClient : HttpClient
   ) { }
 
-  private baseURL = "http://localhost:8080/api/MedicaSys/doctor";
+  private baseURL = "http://3.138.34.169/api/MedicaSys/doctor";
 
   login(doctor:Doctor){
     return this.httpClient.post(`${this.baseURL}/${doctor.iddoctor}`, doctor).pipe(

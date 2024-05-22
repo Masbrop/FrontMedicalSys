@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class RegistrarDoctorService {
 
-  private baseURL = "http://localhost:8080/api/MedicaSys/doctor";
+  private baseURL = "http://3.138.34.169/api/MedicaSys/doctor";
 
   constructor(
     private httpClient : HttpClient

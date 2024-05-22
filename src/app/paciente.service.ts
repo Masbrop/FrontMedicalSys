@@ -9,9 +9,9 @@ import { Paciente } from './paciente';
 export class PacienteService {
 
   //Url para obtener el listado de los pacientes
-  private baseURL = "http://localhost:8080/api/MedicaSys/pacientes";
-  private ObtenerPacienteURL = "http://localhost:8080/api/MedicaSys/obtenerPacientes";
-  private HistorialURL = "http://localhost:8080/api/MedicaSys/historial";
+  private baseURL = "http://3.138.34.169/api/MedicaSys/pacientes";
+  private ObtenerPacienteURL = "http://3.138.34.169/api/MedicaSys/obtenerPacientes";
+  private HistorialURL = "http://3.138.34.169/api/MedicaSys/historial";
 
   constructor(
     private httpClient : HttpClient
